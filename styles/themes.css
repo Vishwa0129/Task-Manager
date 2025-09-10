@@ -1,0 +1,397 @@
+/* Enhanced Theme System CSS Variables and Styles */
+
+/* Base theme variables - will be overridden by JavaScript */
+:root {
+  /* Color Variables */
+  --color-primary: #667eea;
+  --color-primaryHover: #5a6fd8;
+  --color-secondary: #764ba2;
+  --color-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --color-cardBackground: rgba(255, 255, 255, 0.1);
+  --color-inputBackground: rgba(255, 255, 255, 0.05);
+  --color-text: #ffffff;
+  --color-textSecondary: #e2e8f0;
+  --color-border: rgba(255, 255, 255, 0.2);
+  --color-error: #ef4444;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+
+  /* Theme-specific effects */
+  --theme-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  --theme-shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.3);
+  --theme-blur: blur(20px);
+  --theme-border-radius: 15px;
+  --theme-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Theme-specific body classes */
+body[data-theme="dark"] {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+body[data-theme="light"] {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+body[data-theme="ocean"] {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+body[data-theme="sunset"] {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+body[data-theme="forest"] {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+body[data-theme="purple"] {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+body[data-theme="cyberpunk"] {
+  background: var(--color-background);
+  color: var(--color-text);
+  --theme-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+  --theme-shadow-hover: 0 0 40px rgba(255, 0, 255, 0.5);
+}
+
+body[data-theme="midnight"] {
+  background: var(--color-background);
+  color: var(--color-text);
+  --theme-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
+}
+
+body[data-theme="rose"] {
+  background: var(--color-background);
+  color: var(--color-text);
+  --theme-shadow: 0 10px 40px rgba(244, 63, 94, 0.2);
+}
+
+body[data-theme="arctic"] {
+  background: var(--color-background);
+  color: var(--color-text);
+  --theme-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="neon"] {
+  background: var(--color-background);
+  color: var(--color-text);
+  --theme-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+  --theme-shadow-hover: 0 0 50px rgba(0, 255, 136, 0.5);
+}
+
+body[data-theme="autumn"] {
+  background: var(--color-background);
+  color: var(--color-text);
+  --theme-shadow: 0 10px 40px rgba(234, 88, 12, 0.2);
+}
+
+body[data-theme="monochrome"] {
+  background: var(--color-background);
+  color: var(--color-text);
+  --theme-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Theme-specific component styles */
+
+/* Cards with theme-aware styling */
+.theme-card {
+  background: var(--color-cardBackground);
+  backdrop-filter: var(--theme-blur);
+  border: 1px solid var(--color-border);
+  border-radius: var(--theme-border-radius);
+  box-shadow: var(--theme-shadow);
+  transition: var(--theme-transition);
+}
+
+.theme-card:hover {
+  box-shadow: var(--theme-shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Buttons with theme-aware styling */
+.theme-button {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: calc(var(--theme-border-radius) * 0.6);
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--theme-transition);
+  box-shadow: var(--theme-shadow);
+}
+
+.theme-button:hover {
+  background: var(--color-primaryHover);
+  transform: translateY(-2px);
+  box-shadow: var(--theme-shadow-hover);
+}
+
+.theme-button.secondary {
+  background: var(--color-secondary);
+}
+
+.theme-button.outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.theme-button.outline:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* Inputs with theme-aware styling */
+.theme-input {
+  background: var(--color-inputBackground);
+  backdrop-filter: var(--theme-blur);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--theme-border-radius) * 0.8);
+  color: var(--color-text);
+  padding: 12px 16px;
+  transition: var(--theme-transition);
+}
+
+.theme-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.1);
+}
+
+.theme-input::placeholder {
+  color: var(--color-textSecondary);
+  opacity: 0.7;
+}
+
+/* Theme selector component */
+.theme-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.theme-option-card {
+  position: relative;
+  padding: 20px 15px;
+  border-radius: var(--theme-border-radius);
+  cursor: pointer;
+  transition: var(--theme-transition);
+  text-align: center;
+  border: 2px solid transparent;
+  overflow: hidden;
+}
+
+.theme-option-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+/* Individual theme previews */
+.theme-option-card[data-theme="dark"]::before {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+.theme-option-card[data-theme="light"]::before {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+}
+
+.theme-option-card[data-theme="ocean"]::before {
+  background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0369a1 100%);
+}
+
+.theme-option-card[data-theme="sunset"]::before {
+  background: linear-gradient(135deg, #7c2d12 0%, #9a3412 50%, #c2410c 100%);
+}
+
+.theme-option-card[data-theme="forest"]::before {
+  background: linear-gradient(135deg, #14532d 0%, #166534 50%, #15803d 100%);
+}
+
+.theme-option-card[data-theme="purple"]::before {
+  background: linear-gradient(135deg, #581c87 0%, #6b21a8 50%, #7c2d12 100%);
+}
+
+.theme-option-card[data-theme="cyberpunk"]::before {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 50%, #330066 100%);
+}
+
+.theme-option-card[data-theme="midnight"]::before {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+}
+
+.theme-option-card[data-theme="rose"]::before {
+  background: linear-gradient(135deg, #4c1d95 0%, #7c2d12 50%, #991b1b 100%);
+}
+
+.theme-option-card[data-theme="arctic"]::before {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+}
+
+.theme-option-card[data-theme="neon"]::before {
+  background: linear-gradient(135deg, #000000 0%, #1a0033 50%, #330066 100%);
+}
+
+.theme-option-card[data-theme="autumn"]::before {
+  background: linear-gradient(135deg, #451a03 0%, #7c2d12 50%, #92400e 100%);
+}
+
+.theme-option-card[data-theme="monochrome"]::before {
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 50%, #e5e7eb 100%);
+}
+
+.theme-option-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+}
+
+.theme-option-card.active {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 20px rgba(var(--color-primary), 0.3);
+}
+
+.theme-name {
+  font-weight: 600;
+  margin-top: 10px;
+  color: var(--color-text);
+  text-transform: capitalize;
+}
+
+.theme-preview-colors {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.theme-color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Special effects for specific themes */
+[data-theme="cyberpunk"] .theme-card,
+[data-theme="neon"] .theme-card {
+  border: 1px solid var(--color-primary);
+  box-shadow: 
+    var(--theme-shadow),
+    0 0 20px rgba(var(--color-primary), 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="cyberpunk"] .theme-button,
+[data-theme="neon"] .theme-button {
+  box-shadow: 
+    var(--theme-shadow),
+    0 0 15px rgba(var(--color-primary), 0.3);
+}
+
+[data-theme="cyberpunk"] .theme-input,
+[data-theme="neon"] .theme-input {
+  border: 1px solid var(--color-primary);
+  box-shadow: 0 0 10px rgba(var(--color-primary), 0.2);
+}
+
+/* Glassmorphism effects for light themes */
+[data-theme="light"] .theme-card,
+[data-theme="arctic"] .theme-card,
+[data-theme="monochrome"] .theme-card {
+  backdrop-filter: blur(20px) saturate(180%);
+  background: var(--color-cardBackground);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Animation classes for theme transitions */
+.theme-transition-enter {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.theme-transition-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.theme-transition-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.theme-transition-exit-active {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Responsive theme adjustments */
+@media (max-width: 768px) {
+  .theme-selector-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 15px;
+  }
+  
+  .theme-option-card {
+    padding: 15px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-selector-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .theme-card,
+  .theme-button,
+  .theme-input,
+  .theme-option-card {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .theme-card,
+  .theme-button,
+  .theme-input {
+    border-width: 2px;
+  }
+  
+  .theme-option-card {
+    border-width: 3px;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .theme-card {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+}
